@@ -11,8 +11,8 @@ interface ISummary {
 const roundTo2DecimalPlace = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100;
 
 const Summary: FC<ISummary> = ({bill = 0, numberOfPeople = 0, tipPercentage = 0}: ISummary) => {
-  const tip = roundTo2DecimalPlace(bill * tipPercentage / (numberOfPeople | 1));
-  const total = roundTo2DecimalPlace(bill / (numberOfPeople | 1) + tip);
+  const tip = roundTo2DecimalPlace(numberOfPeople ? bill * tipPercentage / (numberOfPeople | 1) : 0);
+  const total = roundTo2DecimalPlace(numberOfPeople ? bill / (numberOfPeople | 1) + tip : 0);
 
   return (
     <div className={styles.summary}>
