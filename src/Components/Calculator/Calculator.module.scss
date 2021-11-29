@@ -1,5 +1,31 @@
 .calculator {
   background-color: var(--white);
-  border-radius: 50%;
+  border-radius: 15px;
   display: flex;
+  padding: 24px;
+  width: 50%;
+  margin: 6% auto auto;
+
+  & > div {
+    width: 50%;
+  }
+
+  .inputsPart {
+    margin: 8px 16px 8px 0;
+
+    > div + div {
+      margin-top: 24px;
+    }
+  }
+
+  .tipWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    & > div {
+      flex: 0 0 calc(100% / 3 - 8px);
+      width: 100%;
+    }
+  }
 }

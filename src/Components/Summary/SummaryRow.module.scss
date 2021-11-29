@@ -1,0 +1,23 @@
+.summaryRow {
+  display: flex;
+  margin-bottom: 24px;
+  justify-content: space-between;
+
+  .informationWrapper {
+    :first-child {
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    :last-child {
+      color: var(--dark-grayish-cyan);
+      font-size: 12px;
+    }
+  }
+
+  .value {
+    color: var(--strong-cyan);
+    font-size: 24px;
+    font-weight: bold;
+  }
+}

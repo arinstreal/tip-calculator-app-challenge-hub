@@ -1,13 +1,13 @@
 import './App.scss';
 import Calculator from "./Components/Calculator/Calculator";
+import logo from "./images/logo.svg"
 
 function App() {
   return (
     <div className="app">
       <div>
-          <span>Split</span>
-          <span>tter</span>
-          <Calculator/>
+        <img className="logo" src={logo} alt="logo"/>
+        <Calculator/>
       </div>
     </div>
   );

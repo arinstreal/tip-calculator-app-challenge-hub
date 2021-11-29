@@ -1,9 +1,28 @@
 .inputWrapper {
-  label {
-    color: var(--darker-grayish-cyan);
-    display: block;
+  margin-right: 8px;
+  position: relative;
+
+  & > div {
+    position: relative;
   }
+
   input {
+    color: var(--very-dark-cyan);
     background-color: var(--lighter-grayish-cyan);
+    outline: none;
+    box-shadow: none !important;
+    border: none;
+    font-weight: 900;
+    padding: 8px 8px 8px 24px;
+    font-size: 15px;
+    text-align: right;
+    width: 100%;
+  }
+
+  img {
+    height: 11px;
+    position: absolute;
+    top: 12px;
+    left: 8px;
   }
 }
