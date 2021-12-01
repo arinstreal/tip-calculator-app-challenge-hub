@@ -1,3 +1,5 @@
+$mobile-design-max-width: 500px;
+
 .calculator {
   background-color: var(--white);
   border-radius: 15px;
@@ -5,9 +7,20 @@
   padding: 24px;
   width: 50%;
   margin: 6% auto auto;
+  @media (max-width: $mobile-design-max-width) {
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 0;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
 
   & > div {
     width: 50%;
+    @media (max-width: $mobile-design-max-width) {
+      width: 100%;
+    }
   }
 
   .inputsPart {
@@ -26,6 +39,9 @@
     & > div {
       flex: 0 0 calc(100% / 3 - 8px);
       width: 100%;
+      @media (max-width: $mobile-design-max-width) {
+        flex: 0 0 calc(100% / 2 - 8px);
+      }
     }
   }
 }

@@ -3,16 +3,20 @@ import styles from "./Summary.module.scss";
 import SummaryRow from "./SummaryRow";
 
 interface ISummary {
-  bill: number;
-  numberOfPeople: number;
+  bill: number | undefined;
+  numberOfPeople: number | undefined;
   tipPercentage: number;
 }
 
-const roundTo2DecimalPlace = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100;
+const roundTo2DecimalPlace = (num: number) => {
+  console.log("test")
+  return Math.round((num + Number.EPSILON) * 100) / 100;
+}
 
-const Summary: FC<ISummary> = ({bill = 0, numberOfPeople = 0, tipPercentage = 0}: ISummary) => {
-  const tip = roundTo2DecimalPlace(numberOfPeople ? bill * tipPercentage / (numberOfPeople | 1) : 0);
-  const total = roundTo2DecimalPlace(numberOfPeople ? bill / (numberOfPeople | 1) + tip : 0);
+const Summary: FC<ISummary> = ({bill = undefined, numberOfPeople = undefined, tipPercentage = 0}: ISummary) => {
+  const tip = bill !== undefined && bill !== 0 && numberOfPeople !== undefined && numberOfPeople !== 0 ? roundTo2DecimalPlace(bill * tipPercentage / numberOfPeople) : 0.00;
+
+  const total = numberOfPeople && bill ? roundTo2DecimalPlace(bill / numberOfPeople + tip) : 0.00;
 
   return (
     <div className={styles.summary}>
