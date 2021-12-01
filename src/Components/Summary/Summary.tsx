@@ -9,19 +9,19 @@ interface ISummary {
 }
 
 const roundTo2DecimalPlace = (num: number) => {
-  console.log("test")
   return Math.round((num + Number.EPSILON) * 100) / 100;
 }
 
 const Summary: FC<ISummary> = ({bill = undefined, numberOfPeople = undefined, tipPercentage = 0}: ISummary) => {
-  const tip = bill !== undefined && bill !== 0 && numberOfPeople !== undefined && numberOfPeople !== 0 ? roundTo2DecimalPlace(bill * tipPercentage / numberOfPeople) : 0.00;
-
-  const total = numberOfPeople && bill ? roundTo2DecimalPlace(bill / numberOfPeople + tip) : 0.00;
+  const billWithTip = bill ? bill * tipPercentage : 0.00;
+  const tipPerPerson = numberOfPeople && numberOfPeople > 0 ? roundTo2DecimalPlace(billWithTip / numberOfPeople) : 0.00;
+  const billPerPerson = bill && numberOfPeople && (numberOfPeople > 0) ? bill / numberOfPeople : 0.00;
+  const total = roundTo2DecimalPlace(billPerPerson + tipPerPerson);
 
   return (
     <div className={styles.summary}>
       <div>
-        <SummaryRow text="Tip Amount" textSecond="/ person" value={tip}/>
+        <SummaryRow text="Tip Amount" textSecond="/ person" value={tipPerPerson}/>
         <SummaryRow text="Total" textSecond="/ person" value={total}/>
       </div>
       <button type="reset">Reset</button>
